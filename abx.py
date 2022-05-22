@@ -49,9 +49,9 @@ if url_1:
             image=response.read()
             img=load_image(BytesIO(image))
             for i in range(0,len(final_urls)):
-                time.sleep(0.1)
                 handle.writestr(f_1,image)
             handle.close()
+            time.sleep(0.1)
 
     st.info("All Images has been Extracted from Website, Click on the below Download button to Download the Images")
     st.download_button(data=open('sample.zip','rb'),file_name='sample.zip',label='Download')
