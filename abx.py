@@ -38,7 +38,7 @@ if url_1:
         reponse=urlopen(i)
         image=reponse.read()
         f=ZipFile('{}.zip'.format(f_1),'w')
-        f.writestr(f_1,image)
+        f.writestr(os.write(f_1,image))
         f.extractall()
         f.close()
 
