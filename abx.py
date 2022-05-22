@@ -53,8 +53,8 @@ if url_1:
             time.sleep(1)
     handle.close()
 
-    st.info("All Images has been Extracted from Website, Click on the below Download button to Download the Images")
-    st.download_button(data=open('sample.zip','rb'),file_name='sample.zip',label='Download')
+st.info("All Images has been Extracted from Website, Click on the below Download button to Download the Images")
+st.download_button(data=open('sample.zip','rb'),file_name='sample.zip',label='Download')
 
 
 else:
