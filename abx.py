@@ -43,15 +43,13 @@ if url_1:
         f_1=filename.split('?')[0]
         # print(f_1)
         
-        with st.spinner('Downloading Images...'):
-            handle=zipfile.ZipFile('sample.zip','w')
-            response=urlopen(i)
-            image=response.read()
-            img=load_image(BytesIO(image))
-            for i in range(0,len(final_urls)):
-                handle.writestr(f_1,image)
-            handle.close()
-            time.sleep(0.1)
+        handle=zipfile.ZipFile('sample.zip','w')
+        response=urlopen(i)
+        image=response.read()
+        img=load_image(BytesIO(image))
+        for i in range(0,len(final_urls)):
+            handle.writestr(f_1,image)
+        handle.close()
 
     st.info("All Images has been Extracted from Website, Click on the below Download button to Download the Images")
     st.download_button(data=open('sample.zip','rb'),file_name='sample.zip',label='Download')
