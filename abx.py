@@ -1,7 +1,4 @@
 
-from opcode import opname
-from time import time
-from tkinter import E
 from urllib import response
 import streamlit as st
 import requests as rq
@@ -10,11 +7,9 @@ import re
 import shutil,os
 import zipfile
 from io import StringIO
-from django.http import HttpResponse
 from urllib.request import urlopen
 from io import BytesIO
 import base64
-from PIL import Image
 import time
 
 
