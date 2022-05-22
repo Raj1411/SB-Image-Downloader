@@ -35,8 +35,11 @@ if url_1:
         r1 = rq.get(i, stream = True)
         if r1.status_code == 200:
             r1.raw.decode_content = True
-        with open(f_1,'wb') as f:
-            shutil.copyfileobj(r1.raw, f)
+        with ZipFile('download','w') as f:
+            f.writestr(f_1,r1.raw.read())
+
+        with ZipFile('download', 'r') as zipObj:
+            zipObj.extractall()
     st.success("All Images has been Downloaded Successfully")
 
 else:
