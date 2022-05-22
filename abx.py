@@ -6,6 +6,13 @@ import re
 import shutil,os
 from zipfile import ZipFile
 from urllib.request import urlopen
+from PIL import Image
+
+
+@st.cache
+def load_image(image_file):
+    img=Image.open(image_file)
+    return img
 
 
 
@@ -35,12 +42,12 @@ if url_1:
         f_1=filename.split('?')[0]
         # print(f_1)
         
-        reponse=urlopen(i)
-        image=reponse.read()
-        f=ZipFile('{}.zip'.format(f_1),'w')
-        f.writestr(f_1,image)
-        f.extractall()
-        f.close()
+        response=urlopen(i)
+        image=response.read()
+        img=load_image(BytesIO(image))
+        # st.image(img,width=1800)
+        with open(f_1,'wb') as f:
+            f.write(image)
 
 #         r1 = rq.get(i, stream = True)
 #         if r1.status_code == 200:
