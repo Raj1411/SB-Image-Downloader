@@ -26,42 +26,38 @@ url_1=st.text_input("Enter the URL of the product you want to download: ")
 
 handle=zipfile.ZipFile('sample.zip','w')
 
-if url_1:
+if url_1=="":
+    pass
+else:
+    ac=st.button("Generate Images")
+    if ac:
 
-    r=rq.get(url_1)
-    soup=bs(r.text,'html.parser')
 
-    a_tags=soup.find_all('a',href=re.compile('//cdn.shopify.com/s/files/1'))
+        r=rq.get(url_1)
+        soup=bs(r.text,'html.parser')
 
-    for i in a_tags:
-        aa=i.get('href')
-        final_urls.append('https:'+aa)
+        a_tags=soup.find_all('a',href=re.compile('//cdn.shopify.com/s/files/1'))
 
-    f_u=final_urls
-    # print(f_u)
+        for i in a_tags:
+            aa=i.get('href')
+            final_urls.append('https:'+aa)
 
-    for i in f_u:
-        filename=i.split('/')[-1]
-        f_1=filename.split('?')[0]
-        # print(f_1)
+        f_u=final_urls
         
+        for i in f_u:
+            filename=i.split('/')[-1]
+            f_1=filename.split('?')[0]
+
         with st.spinner('Downloading {}'.format(f_1)):
             response_1=urlopen(i)
             image=response_1.read()
-            img=load_image(BytesIO(image))
+            # img=load_image(BytesIO(image))
             handle.writestr(f_1,image)
             time.sleep(1)
-    handle.close()
-
-    st.info("All Images has been Extracted from Website, Click on the below Download button to Download the Images")
-    st.download_button(data=open('sample.zip','rb'),file_name='sample.zip',label='Download')
+        handle.close()
 
 
-else:
-    pass
+        st.info("All Images has been Extracted from Website, Click on the below Download button to Download the Images")
 
-
-
-
-
-
+        
+        dwnld=st.download_button(data=open('sample.zip','rb'),file_name='sample.zip',label='Download')
