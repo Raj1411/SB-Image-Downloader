@@ -24,6 +24,8 @@ final_urls=[]
 
 url_1=st.text_input("Enter the URL of the product you want to download: ")
 
+handle=zipfile.ZipFile('sample.zip','w')
+
 if url_1:
 
     r=rq.get(url_1)
@@ -43,13 +45,12 @@ if url_1:
         f_1=filename.split('?')[0]
         # print(f_1)
         
-        handle=zipfile.ZipFile('sample.zip','w')
-        response=urlopen(i)
-        image=response.read()
+      
+        response_1=urlopen(i)
+        image=response_1.read()
         img=load_image(BytesIO(image))
-        for i in range(0,len(final_urls)):
-            handle.writestr(f_1,image)
-        handle.close()
+        handle.writestr(f_1,image)
+    handle.close()
 
     st.info("All Images has been Extracted from Website, Click on the below Download button to Download the Images")
     st.download_button(data=open('sample.zip','rb'),file_name='sample.zip',label='Download')
