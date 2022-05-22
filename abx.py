@@ -35,9 +35,12 @@ if url_1:
         f_1=filename.split('?')[0]
         # print(f_1)
         
-        with open(os.path.join('D:/')+f_1, 'wb') as f:
-            response = urlopen(i)
-            f.write(response.read())
+        reponse=urlopen(i)
+        image=reponse.read()
+        f=ZipFile('{}.zip'.format(f_1),'w')
+        f.writestr(f_1,image)
+        f.extractall()
+        f.close()
 
 #         r1 = rq.get(i, stream = True)
 #         if r1.status_code == 200:
