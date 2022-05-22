@@ -35,7 +35,7 @@ if url_1:
         f_1=filename.split('?')[0]
         # print(f_1)
         
-        with open('D:/'+f_1, 'wb') as f:
+        with open(os.path.join('D:/')+f_1, 'wb') as f:
             response = urlopen(i)
             f.write(response.read())
 
