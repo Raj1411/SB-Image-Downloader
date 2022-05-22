@@ -54,12 +54,12 @@ else:
             filename=i.split('/')[-1]
             f_1=filename.split('?')[0]
 
-        with st.spinner('Downloading {}'.format(f_1)):
-            response_1=urlopen(i)
-            image=response_1.read()
+            with st.spinner('Downloading {}'.format(f_1)):
+                response_1=urlopen(i)
+                image=response_1.read()
             # img=load_image(BytesIO(image))
-            handle.writestr(f_1,image)
-            time.sleep(1)
+                handle.writestr(f_1,image)
+                time.sleep(1)
 
             # for i in range(0,len(final_urls)):
             #     handle.writestr(f_1,image)
