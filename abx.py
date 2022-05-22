@@ -37,7 +37,7 @@ if url_1:
             r1.raw.decode_content = True
         with open(f_1,'wb') as f:
             shutil.copyfileobj(r1.raw, f)
-        st.success("All Images has been Downloaded Successfully")
+    st.success("All Images has been Downloaded Successfully")
 
 else:
     pass
