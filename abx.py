@@ -45,11 +45,12 @@ if url_1:
         f_1=filename.split('?')[0]
         # print(f_1)
         
-      
-        response_1=urlopen(i)
-        image=response_1.read()
-        img=load_image(BytesIO(image))
-        handle.writestr(f_1,image)
+        with st.spinner('Downloading {}'.format(f_1)):
+            response_1=urlopen(i)
+            image=response_1.read()
+            img=load_image(BytesIO(image))
+            handle.writestr(f_1,image)
+            time.sleep(1)
     handle.close()
 
     st.info("All Images has been Extracted from Website, Click on the below Download button to Download the Images")
