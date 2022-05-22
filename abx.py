@@ -47,7 +47,7 @@ if url_1:
         image=response.read()
         img=load_image(BytesIO(image))
         # st.image(img,width=1800)
-        with open(f_1,'wb') as f:
+        with open("C:/Users/Admin/Downloads"+"//"+f_1,'wb') as f:
             f.write(image)
 
 #         r1 = rq.get(i, stream = True)
