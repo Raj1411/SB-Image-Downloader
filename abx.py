@@ -4,7 +4,7 @@ import requests as rq
 from bs4 import BeautifulSoup as bs
 import re
 import shutil,os
-from zipfile import ZipFile
+import zipfile
 from urllib.request import urlopen
 from PIL import Image
 from io import BytesIO
