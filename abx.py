@@ -3,7 +3,8 @@ import streamlit as st
 import requests as rq
 from bs4 import BeautifulSoup as bs
 import re
-import shutil
+import shutil,os
+from zipfile import ZipFile
 
 
 st.set_page_config(page_title="SB Image Downloader", page_icon="📚")
