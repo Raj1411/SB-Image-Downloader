@@ -7,6 +7,7 @@ import shutil,os
 from zipfile import ZipFile
 from urllib.request import urlopen
 from PIL import Image
+from io import BytesIO
 
 
 @st.cache
