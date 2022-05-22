@@ -5,6 +5,8 @@ from bs4 import BeautifulSoup as bs
 import re
 import shutil,os
 from zipfile import ZipFile
+from urllib.request import urlopen
+
 
 
 st.set_page_config(page_title="SB Image Downloader", page_icon="📚")
@@ -32,16 +34,23 @@ if url_1:
         filename=i.split('/')[-1]
         f_1=filename.split('?')[0]
         # print(f_1)
+        
+        reponse=urlopen(i)
+        image=reponse.read()
+        f=ZipFile('{}.zip'.format(f_1),'w')
+        f.writestr(f_1,image)
+        f.extractall()
+        f.close()
 
-        r1 = rq.get(i, stream = True)
-        if r1.status_code == 200:
-            r1.raw.decode_content = True
-        with ZipFile('download','w') as f:
-            f.writestr(f_1,r1.raw.read())
+#         r1 = rq.get(i, stream = True)
+#         if r1.status_code == 200:
+#             r1.raw.decode_content = True
+#         with ZipFile('download','w') as f:
+#             f.writestr(f_1,r1.raw.read())
 
-        with ZipFile('download', 'r') as zipObj:
-            zipObj.extractall()
-    st.success("All Images has been Downloaded Successfully")
+#         with ZipFile('download', 'r') as zipObj:
+#             zipObj.extractall()
+#     st.success("All Images has been Downloaded Successfully")
 
 else:
     pass
